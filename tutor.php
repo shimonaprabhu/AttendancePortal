@@ -37,6 +37,7 @@ require_once 'init.php';
 		  <div class="form-group col-md-4">
 		   <label for="inputOption">Option</label>
 		      <select name="inputOption" id="inputOption" class="form-control">
+		        <option>Option</option>
 		        <option value="submit">Submit Attendance</option>
 		        <option value="view">View Statistics</option>
 		        <option value="send">Send Notification</option>

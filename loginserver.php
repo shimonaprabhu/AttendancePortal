@@ -14,18 +14,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		    	$branch=$_POST['InputBranch'];
 		    	$semester=$_POST['InputSemester'];
 		    	$subcode=$_POST['InputSubjectCode'];
+
 		    	$query = "select * from tutor where id='$ID' && password='$password'";
 				$result=$sql->prepare($query);
 				$result->execute();
 				$rowcount=$result->rowCount();
-				if($rowcount == 1) {
+
+		    	$query2 = "select * from attendance where tutor_id='$ID' && subject_code='$subcode' && branch='$branch' &&sem='$semester'";
+				$result2=$sql->prepare($query2);
+				$result2->execute();
+				$rowcount2=$result2->rowCount();
+
+				if($rowcount == 1 && $rowcount2>=1) {
 	         		/*session_register("username");
 	         		$_SESSION['login_user'] = $email;*/
 	         		header("Location: tutoraccess.php?id=$ID&semester=$semester&branch=$branch&subject_code=$subcode");
 	      		}
 	      		else {
-	      			header("Location: project.php");
-	         		echo '<script> alert("Your Login Name or Password is invalid")</script>';
+	      			header("Location: loginfail.php");
 	      		}
 	      	}
 	      	elseif($_POST['inputOption']=='view'){
@@ -38,14 +44,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$result=$sql->prepare($query);
 				$result->execute();
 				$rowcount=$result->rowCount();
-				if($rowcount == 1) {
+		    	$query2 = "select * from attendance where tutor_id='$ID' && subject_code='$subcode' && branch='$branch' &&sem='$semester'";
+				$result2=$sql->prepare($query2);
+				$result2->execute();
+				$rowcount2=$result2->rowCount();
+				if($rowcount == 1 && $rowcount2>=1) {
 	         		/*session_register("username");
 	         		$_SESSION['login_user'] = $email;*/
 	         		header("Location: tutoraccessStat.php?id=$ID&semester=$semester&branch=$branch&subject_code=$subcode");
 	      		}
 	      		else {
-	      			header("Location: project.php");
-	         		echo '<script> alert("Your Login Name or Password is invalid")</script>';
+	      			header("Location: loginfail.php");
 	      		}
 	      	}
 	      	elseif($_POST['inputOption']=='send'){
@@ -58,14 +67,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$result=$sql->prepare($query);
 				$result->execute();
 				$rowcount=$result->rowCount();
-				if($rowcount == 1) {
+		    	$query2 = "select * from attendance where tutor_id='$ID' && subject_code='$subcode' && branch='$branch' &&sem='$semester'";
+				$result2=$sql->prepare($query2);
+				$result2->execute();
+				$rowcount2=$result2->rowCount();
+				if($rowcount == 1&& $rowcount2>=1) {
 	         		/*session_register("username");
 	         		$_SESSION['login_user'] = $email;*/
 	         		header("Location: tutoraccessNotify.php?id=$ID&semester=$semester&branch=$branch&subject_code=$subcode");
 	      		}
 	      		else {
-	      			header("Location: project.php");
-	         		echo '<script> alert("Your Login Name or Password is invalid")</script>';
+	      			header("Location: loginfail.php");
 	      		}
 	      	}
 	      	}
@@ -76,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		    	$branch=$_POST['InputBranch'];
 		    	$semester=$_POST['InputSemester'];
 
-		    	$query = "select * from student where id='$USN' && password='$password'";
+		    	$query = "select * from student where id='$USN' && password='$password' && branch='$branch' && sem='$semester'";
 				$result=$sql->prepare($query);
 				$result->execute();
 				$rowcount=$result->rowCount();
@@ -86,8 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	         		header("Location: studentaccess.php?id=$USN&semester=$semester&branch=$branch");
 	      		}
 	      		else {
-	      			header("Location: project.php");
-	         		echo '<script> alert("Your Login Name or Password is invalid")</script>';
+	      			header("Location: loginfail.php");
 	      		}
 		    }
      }

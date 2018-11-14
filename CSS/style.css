@@ -16,7 +16,6 @@ body {
     background-repeat: no-repeat;
 	background-image: url("../Images/pesit.jpeg");
 	background-size: 100% 100%;
-
     background-attachment: fixed;
 }
 
@@ -51,6 +50,15 @@ a.btn:hover {
 	margin-top: 75px;
     color: white;
     background-color: rgba(0,0,0,0.5);
+	padding: 32px;
+	border-radius: 25px;	
+}
+
+#tutor1{
+	margin-left: 300px;
+	margin-top: 75px;
+    color: white;
+    background-color: rgba(0,0,0,0.65);
 	padding: 32px;
 	border-radius: 25px;	
 }
@@ -110,7 +118,4 @@ a.btn:hover {
 #btngrpNoRet{
 	padding-left: 230px;
 }
-
-
-
 

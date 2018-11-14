@@ -18,6 +18,7 @@ $result=$sql->prepare($query);
 $result->execute();
 $rowcount=$result->rowCount();
 ?>
+<body>
 	<div>
 		<div class="jumbotron" id="student">
 			<h5 class="text-center"> Number of classes conducted for <?=$subcode;?> : <?=$class;?></h5>
@@ -58,5 +59,3 @@ $rowcount=$result->rowCount();
 	</div>
 </body>
 </html>
-
-

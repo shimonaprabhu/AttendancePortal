@@ -10,9 +10,12 @@ require_once 'init.php';
 	$result=$sql->prepare($query);
 	$result->execute();
 	$message='';
-	while ($row = $result->fetch()){
-	$message=$message.'Attendance for Subject '.$row['subject_code'].' is '.$row['status'];
+	
+	while ($row = $result->fetch())
+	{
+		$message=$message.'Attendance for Subject '.$row['subject_code'].' is '.$row['status'];
 					}
+	
 	$mailMsg = $message;
 	$query2="SELECT email from student where id='$id'";
 	
@@ -20,8 +23,9 @@ require_once 'init.php';
 	$result2->execute();
     
     $mailto='';
-    while ($row2 = $result2->fetch()){
-	$mailto=$row2['email'];
+    while ($row2 = $result2->fetch())
+    {
+		$mailto=$row2['email'];
 	}
    require 'PHPMailer-master/PHPMailerAutoload.php';
    $mail = new PHPMailer();
@@ -38,7 +42,6 @@ require_once 'init.php';
    $mail ->Subject = $mailSub;
    $mail ->Body = $mailMsg;
    $mail ->AddAddress($mailto);
-
    if(!$mail->Send())
    {
    	?>
@@ -52,6 +55,7 @@ require_once 'init.php';
 	</div>
 </body>
 </html>
+
 <?php
    }
    else
