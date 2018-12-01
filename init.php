@@ -13,7 +13,7 @@
 	$dbhost = 'localhost';
 	$dbname='attendance_db';
 	$dbuser = 'root';
-	$dbpass = 'root123';
+	$dbpass = 'teju@123';
 	$sql = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 ?>
 <body id="background">

@@ -3,9 +3,9 @@ require_once 'init.php';
 ?>
 <div>
 	<div class="jumbotron" id="tutor">
-	  <h1 class="display-4 text-center">Welcome tutor</h1>
+	  <h1 class="display-4 text-center">Welcome Tutor</h1>
 	  <br>
-	  <h5 class="text-center">Please enter your login details</h5>
+	  <h5 class="text-center">Please Enter Your Login Details</h5>
 	  <br>
 	  <form class="form" action="loginserver.php" method="post">
 		  <div class="form-row">
