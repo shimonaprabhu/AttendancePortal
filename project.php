@@ -20,6 +20,11 @@ $sql->query($query);*/
 		  <a class="btn bg-secondary btn-lg btn-block" href="student.php" role="button">I am a student</a>
 		</div>
 	  </div>
+	  <div class="row justify-content-center">
+	  	<div class="col-lg-8">
+		  <a class="btn bg-secondary btn-lg btn-block" href="tutoraccessNotify.php" role="button">I am a class coordinator</a>
+		</div>
+	  </div>
 	</div>
 	
 </div>

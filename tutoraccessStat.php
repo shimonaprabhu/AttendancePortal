@@ -4,6 +4,7 @@ $id=$_GET['id'];
 $semester=$_GET['semester'];
 $branch=$_GET['branch'];
 $subject_code=$_GET['subject_code'];
+
 $query= "SELECT student_id,status FROM attendance WHERE subject_code='$subject_code' AND tutor_id='$id' ";
 $result=$sql->prepare($query);
 $result->execute();
@@ -43,4 +44,9 @@ $chart_data = substr($chart_data, 0, -2);
 });
 </script>
 
+<<<<<<< HEAD
 </body>
+=======
+</body>
+
+>>>>>>> 6c26e6140596e7d0e406f6ed596479983c0c3a8f

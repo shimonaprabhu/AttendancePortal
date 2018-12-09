@@ -7,9 +7,10 @@ $branch=$_GET['branch'];
 echo "$semester";
 echo "$branch";*/
 
-$query = "SELECT student_id,subject_code,status from attendance where student_id='$id' and sem='$semester' and branch='$branch'";
+$query = "SELECT student_id,subject_code,status,attended from attendance where student_id='$id' and sem='$semester' and branch='$branch'";
 $result=$sql->prepare($query);
 $result->execute();
+
 /*$rowcount=$result->rowCount();
 echo "$rowcount";*/
 ?>
@@ -25,7 +26,14 @@ echo "$rowcount";*/
 				<tr>
 					<td><?=$row['student_id'];?></td>
 					<td><?=$row['subject_code'];?></td>
-					<td><?=$row['status'];?>%</td>
+					<?php 
+					$subject_code=$row['subject_code'];
+					$query2 = "SELECT classes from subject where code='$subject_code' and sem='$semester' and branch='$branch'";
+					$result2=$sql->prepare($query2);
+					$result2->execute();
+					$row2 = $result2->fetch();
+					?>
+					<td><?=$row['status'];?>% (<?=$row['attended'];?>/<?=$row2['classes'];?>)</td>
 				</tr>
 				<?php endwhile;?>
 				</tbody>

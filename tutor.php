@@ -40,7 +40,7 @@ require_once 'init.php';
 		        <option>Option</option>
 		        <option value="submit">Submit Attendance</option>
 		        <option value="view">View Statistics</option>
-		        <option value="send">Send Notification</option>
+		        <!-- <option value="send">Send Notification</option> -->
 		      </select>
 		   </div>
 		   </div>

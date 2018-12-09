@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	      			header("Location: loginfail.php");
 	      		}
 	      	}
-	      	elseif($_POST['inputOption']=='send'){
+	      	/*elseif($_POST['inputOption']=='send'){
 		    	$ID=$_POST['InputID'];
         		$password=$_POST['InputPassword'];
 		    	$branch=$_POST['InputBranch'];
@@ -72,14 +72,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$result2->execute();
 				$rowcount2=$result2->rowCount();
 				if($rowcount == 1&& $rowcount2>=1) {
-	         		/*session_register("username");
-	         		$_SESSION['login_user'] = $email;*/
+	         		session_register("username");
+	         		$_SESSION['login_user'] = $email;
 	         		header("Location: tutoraccessNotify.php?id=$ID&semester=$semester&branch=$branch&subject_code=$subcode");
 	      		}
 	      		else {
 	      			header("Location: loginfail.php");
 	      		}
-	      	}
+	      	}*/
 	      	}
 		    
 		    elseif ($_POST['logtype']=='student') {
@@ -101,6 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	      			header("Location: loginfail.php");
 	      		}
 		    }
+		    
      }
  }
 

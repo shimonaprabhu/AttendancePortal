@@ -1,19 +1,32 @@
 <?php 
 require_once 'init.php';
-	$semester=$_POST['semester'];
+/*	$semester=$_POST['semester'];
 	$branch=$_POST['branch'];
 	$subject_code=$_POST['subject_code'];
+	$id = $_POST['InputUSN'];*/
+	$tid=$_POST['InputID'];
+	$password=$_POST['InputPassword'];
 	$id = $_POST['InputUSN'];
     $mailSub = 'Attendance Report';
     
-    $query = "SELECT student_id,subject_code,status from attendance where student_id='$id' and sem='$semester' and branch='$branch' and subject_code='$subject_code'";
+    /*$query = "SELECT student_id,subject_code,status from attendance where student_id='$id' and sem='$semester' and branch='$branch' and subject_code='$subject_code'";*/
+    $query = "SELECT student_id,subject_code,status,attended,branch,sem from attendance where student_id='$id'";
 	$result=$sql->prepare($query);
 	$result->execute();
 	$message='';
 	
 	while ($row = $result->fetch())
 	{
-		$message=$message.'Attendance for Subject '.$row['subject_code'].' is '.$row['status'];
+		$subject_code=$row['subject_code'];
+		$branch=$row['branch'];
+		$semester=$row['sem'];
+		$attended=$row['attended'];
+		$query2 = "SELECT classes from subject where code='$subject_code' and sem='$semester' and branch='$branch'";
+		$result2=$sql->prepare($query2);
+		$result2->execute();
+		$row2 = $result2->fetch();
+		$classes=$row2['classes'];
+		$message=$message.'Attendance for Subject '.$row['subject_code'].' is '.$row['status'].'%'.'('.$attended.'/'.$classes.')'.'<br>';
 					}
 	
 	$mailMsg = $message;
@@ -27,6 +40,7 @@ require_once 'init.php';
     {
 		$mailto=$row2['email'];
 	}
+
    require 'PHPMailer-master/PHPMailerAutoload.php';
    $mail = new PHPMailer();
    $mail ->IsSmtp();
