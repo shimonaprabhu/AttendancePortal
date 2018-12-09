@@ -17,6 +17,19 @@ $query = "SELECT student_id,attended from attendance where subject_code='$subjec
 $result=$sql->prepare($query);
 $result->execute();
 $rowcount=$result->rowCount();
+$row = $result->fetchAll();
+
+for($i=0;$i<count($row)-1;$i++){
+$min=$i;
+for($j=$i+1;$j<count($row);$j++){
+if(intval(substr($row[$j]['student_id'],1))<intval(substr($row[$min]['student_id'],1))){
+$min=$j;
+}
+}
+$temp=$row[$i];
+$row[$i]=$row[$min];
+$row[$min]=$temp;
+}
 ?>
 <body>
 	<div>
@@ -27,10 +40,10 @@ $rowcount=$result->rowCount();
 					<th>USN</th><th>Current Status</th><th></th>
 				</thead>
 				<tbody>
-				<?php while($row = $result->fetch()):?>
+				<?php foreach ($row as $rows){?>
 				<tr>
-					<td><?=$row['student_id'];?></td>
-					<td><?=$row['attended'];?></td>
+					<td><?=$rows['student_id'];?></td>
+					<td><?=$rows['attended'];?></td>
 					<td>
 					<form action="attendance.php" method="get">
 						<div class="form-check-inline">
@@ -46,7 +59,7 @@ $rowcount=$result->rowCount();
 						</div> -->
 					</td>
 				</tr>
-				<?php endwhile;?>
+				<?php }?>
 				</tbody>
 			</table>
 			<div id="btngrp">

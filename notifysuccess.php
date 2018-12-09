@@ -51,7 +51,7 @@ require_once 'init.php';
    $mail ->Port = 465; // or 587
    $mail ->IsHTML(true);
    $mail ->Username = "AttendancePortal123@gmail.com";
-   $mail ->Password = "AttendancePortal1*";
+   $mail ->Password = "attendanceportal1*";
    $mail ->SetFrom("AttendancePortal123@gmail.com");
    $mail ->Subject = $mailSub;
    $mail ->Body = $mailMsg;
