@@ -40,16 +40,13 @@ $chart_data = substr($chart_data, 0, -2);
 	ykeys:['status'],
 	labels:['status'],
 	parseTime:false,
-	smooth:false
+	smooth:true
 });
 </script>
-<<<<<<< HEAD
 
 <<<<<<< HEAD
 </body>
 =======
-=======
->>>>>>> 10fcdc456ff18ab450120772aadd67db072e17a6
 </body>
 
 >>>>>>> 6c26e6140596e7d0e406f6ed596479983c0c3a8f
